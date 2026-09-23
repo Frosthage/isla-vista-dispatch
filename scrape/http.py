@@ -14,7 +14,7 @@ import httpx
 
 log = logging.getLogger("http")
 
-UA = "isla-vista-housing/0.1 (+https://github.com/; student housing index; contact via repo issues)"
+UA = "isla-vista-dispatch/0.1 (+https://github.com/Frosthage/isla-vista-dispatch; student housing index)"
 BROWSER_UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36"
 
 CACHE_DIR = Path(".cache")

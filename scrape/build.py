@@ -168,6 +168,7 @@ def render(listings: list[Listing], out_dir: Path, today: str, geocode_cache: di
         (ld / f"{slug_id(lst.id)}.html").write_text(
             env.get_template("listing.html").render(l=lst, region=REGIONS[lst.region], today=today, root="../")
         )
+    (out_dir / "robots.txt").write_text("User-agent: *\nDisallow: /\n")
     (out_dir / "listings.json").write_text(json.dumps([l.to_dict() for l in listings], indent=0))
     (out_dir / "geocode_cache.json").write_text(json.dumps(geocode_cache, indent=0, sort_keys=True))
     log.info("rendered %d listings (%s)", len(listings), ", ".join(f"{REGIONS[r]['name']}: {c}" for r, c in counts.items()))

@@ -1,5 +1,7 @@
 # Isla Vista Dispatch
 
+Live site: https://frosthage.github.io/isla-vista-dispatch/
+
 Scrapes public rental listings around UC Santa Barbara every morning and publishes a static
 site with two sections, **Isla Vista** and **Santa Barbara** (the rest of the south coast:
 Goleta outside IV, downtown Santa Barbara, Montecito, Carpinteria). Each listing shows photos,
