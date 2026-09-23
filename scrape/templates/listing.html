@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% set region_key = l.region %}
+{% block title %}{{ l.title }} · {{ region.name }}{% endblock %}
+{% block body %}
+<article class="detail">
+  <p class="crumbs"><a href="{{ root }}{{ region.slug }}/index.html">← {{ region.name }}</a></p>
+  <header>
+    <span class="badge kind {{ l.kind }}">{{ l.kind }}</span>
+    {% if l.first_seen == today %}<span class="badge new">New today</span>{% endif %}
+    <h1>{{ l.title }}</h1>
+    <p class="addr">{{ l.address or '' }}{% if l.unit %} #{{ l.unit }}{% endif %}{% if l.city %}, {{ l.city }}{% endif %}{% if l.zip %} {{ l.zip }}{% endif %}</p>
+    <p class="price">
+      {% if l.rent %}{{ l.rent|money }}<small>/mo</small>{% elif l.rent_text %}{{ l.rent_text }}{% else %}Price on request{% endif %}
+      {% if l.rent_per_person %} <small class="pp">≈ {{ l.rent_per_person|money }} per person</small>{% endif %}
+    </p>
+  </header>
+  {% if l.photos %}
+  <div class="gallery">
+    <img id="main" src="{{ root if not l.photos[0].startswith('http') else '' }}{{ l.photos[0] }}" alt="">
+    {% if l.photos|length > 1 %}
+    <div class="thumbs">
+      {% for p in l.photos %}<img loading="lazy" src="{{ root if not p.startswith('http') else '' }}{{ p }}" alt="" onclick="document.getElementById('main').src=this.src">{% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+  <div class="cols">
+    <section>
+      <h2>Details</h2>
+      <dl class="facts">
+        {% if l.beds is not none %}<dt>Bedrooms</dt><dd>{{ l.beds|num }}</dd>{% endif %}
+        {% if l.baths is not none %}<dt>Bathrooms</dt><dd>{{ l.baths|num }}</dd>{% endif %}
+        {% if l.sqft %}<dt>Size</dt><dd>{{ l.sqft }} sq ft</dd>{% endif %}
+        {% if l.available %}<dt>Available</dt><dd>{{ l.available }}</dd>{% endif %}
+        {% if l.lease_term %}<dt>Lease term</dt><dd>{{ l.lease_term }}</dd>{% endif %}
+        {% if l.furnished %}<dt>Furnished</dt><dd>{{ l.furnished }}</dd>{% endif %}
+        {% if l.utilities_included %}<dt>Utilities included</dt><dd>{{ l.utilities_included }}</dd>{% endif %}
+        {% if l.pets %}<dt>Pets</dt><dd>{{ l.pets }}</dd>{% endif %}
+        {% if l.parking %}<dt>Parking</dt><dd>{{ l.parking }}</dd>{% endif %}
+        {% if l.laundry %}<dt>Laundry</dt><dd>{{ l.laundry }}</dd>{% endif %}
+        {% if l.posted_at %}<dt>Posted</dt><dd>{{ l.posted_at[:10] }}</dd>{% endif %}
+        <dt>First seen here</dt><dd>{{ l.first_seen }}</dd>
+      </dl>
+      {% if l.amenities %}<h3>Amenities</h3><ul class="amenities">{% for a in l.amenities %}<li>{{ a }}</li>{% endfor %}</ul>{% endif %}
+      {% if l.description %}<h2>Description</h2><div class="desc">{{ l.description|replace('\n', '<br>')|safe }}</div>{% endif %}
+      {% if l.price_history|length > 1 %}
+      <h3>Price history</h3>
+      <ul class="history">{% for h in l.price_history %}<li>{{ h.date }}: {{ h.rent|money }}</li>{% endfor %}</ul>
+      {% endif %}
+    </section>
+    <aside>
+      <div id="minimap" class="minimap"></div>
+      {% if l.geo_precision == 'geocoded' %}<p class="muted small">Pin placed by geocoding the address.</p>{% endif %}
+      <h2>Listed by</h2>
+      <p><strong>{{ l.manager.name or source_name(l.source) }}</strong></p>
+      {% if l.manager.phone %}<p><a href="tel:{{ l.manager.phone|replace(' ', '')|replace('(', '')|replace(')', '')|replace('-', '') }}">{{ l.manager.phone }}</a></p>{% endif %}
+      {% if l.manager.email %}<p><a href="mailto:{{ l.manager.email }}">{{ l.manager.email }}</a></p>{% endif %}
+      {% if l.manager.website %}<p><a href="{{ l.manager.website }}" rel="noopener">Website</a></p>{% endif %}
+      <p><a class="btn" href="{{ l.source_url }}" rel="noopener">Open on {{ source_name(l.source) }} →</a></p>
+      {% if l.also_on %}<p class="small">Also on: {% for a in l.also_on %}<a href="{{ a.url }}" rel="noopener">{{ source_name(a.source) }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</p>{% endif %}
+      {% if l.policies %}
+      <h3>Lease policies <span class="small muted">(IV Tenants Union guide)</span></h3>
+      <dl class="policies">{% for k, v in l.policies.items() %}<dt>{{ k }}</dt><dd>{{ v }}</dd>{% endfor %}</dl>
+      {% endif %}
+    </aside>
+  </div>
+</article>
+{% endblock %}
+{% block scripts %}
+{% if l.lat %}
+<script>
+  var m = L.map('minimap', {scrollWheelZoom: false}).setView([{{ l.lat }}, {{ l.lng }}], 16);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19, attribution: '&copy; OpenStreetMap'}).addTo(m);
+  L.marker([{{ l.lat }}, {{ l.lng }}]).addTo(m);
+</script>
+{% else %}
+<script>document.getElementById('minimap').innerHTML = '<p class="muted small">No map location for this listing.</p>';</script>
+{% endif %}
+{% endblock %}

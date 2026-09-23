@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}{{ region.name }} student rentals{% endblock %}
+{% block body %}
+<section class="region-head">
+  <h1>{{ region.name }} <span class="count" id="count">{{ listings|length }}</span></h1>
+  <p class="muted">{% if new_count %}<span class="new">{{ new_count }} new today</span> · {% endif %}
+    Sources: {% for s, c in sources %}{{ source_name(s) }} ({{ c }}){% if not loop.last %}, {% endif %}{% endfor %}</p>
+</section>
+<form class="filters" id="filters" onsubmit="return false">
+  <fieldset>
+    <legend>Type</legend>
+    <label><input type="checkbox" name="kind" value="lease" checked> Lease</label>
+    <label><input type="checkbox" name="kind" value="sublease" checked> Sublease</label>
+    <label><input type="checkbox" name="kind" value="room" checked> Room</label>
+  </fieldset>
+  <label>Min beds <select name="beds"><option value="">any</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+  <label>Max rent <input type="number" name="rent" min="0" step="100" placeholder="$"></label>
+  <label>Source <select name="source"><option value="">all</option>{% for s, c in sources %}<option value="{{ s }}">{{ source_name(s) }}</option>{% endfor %}</select></label>
+  <label>Available <select name="avail"><option value="">any</option><option value="now">Now / 2026</option><option value="2027">2027-28 school year</option></select></label>
+  <label><input type="checkbox" name="new"> New today only</label>
+  <label>Sort <select name="sort"><option value="new">New first</option><option value="rent-asc">Rent ↑</option><option value="rent-desc">Rent ↓</option><option value="beds">Beds</option></select></label>
+  <button type="button" id="reset">Reset</button>
+</form>
+<div class="layout">
+  <div id="map" class="map"></div>
+  <section class="cards" id="cards">
+    {% for l in listings %}
+    <article class="card" id="c-{{ slug_id(l.id) }}" data-id="{{ slug_id(l.id) }}" data-kind="{{ l.kind }}" data-beds="{{ l.beds|num }}" data-rent="{{ l.rent or '' }}" data-source="{{ l.source }}" data-avail="{{ (l.available or '')|lower }}" data-new="{{ 1 if l.first_seen == today else 0 }}">
+      <a class="thumb" href="{{ root }}l/{{ slug_id(l.id) }}.html">
+        {% if l.photos %}<img loading="lazy" src="{{ root if not l.photos[0].startswith('http') else '' }}{{ l.photos[0] }}" alt="">{% else %}<div class="nophoto">No photo</div>{% endif %}
+        <span class="badge kind {{ l.kind }}">{{ l.kind }}</span>
+        {% if l.first_seen == today %}<span class="badge new">New</span>{% endif %}
+        {% if l.price_history|length > 1 %}{% set prev = l.price_history[-2].rent %}{% if l.rent and prev %}<span class="badge price {{ 'down' if l.rent < prev else 'up' }}">{{ '↓' if l.rent < prev else '↑' }} was {{ prev|money }}</span>{% endif %}{% endif %}
+      </a>
+      <div class="body">
+        <div class="price">
+          {% if l.rent %}{{ l.rent|money }}<small>/mo</small>{% elif l.rent_text %}{{ l.rent_text }}{% else %}<span class="muted">Price on request</span>{% endif %}
+          {% if l.rent_per_person %}<small class="pp">≈ {{ l.rent_per_person|money }} / person</small>{% endif %}
+        </div>
+        <h3><a href="{{ root }}l/{{ slug_id(l.id) }}.html">{{ l.title }}</a></h3>
+        <p class="addr">{{ l.address or '' }}{% if l.unit %} #{{ l.unit }}{% endif %}{% if l.city and region_key != 'isla_vista' %} · {{ l.city }}{% endif %}</p>
+        <p class="facts">
+          {% if l.beds is not none %}<span>{{ l.beds|num }} bd</span>{% endif %}
+          {% if l.baths is not none %}<span>{{ l.baths|num }} ba</span>{% endif %}
+          {% if l.sqft %}<span>{{ l.sqft }} sqft</span>{% endif %}
+          {% if l.available %}<span>Avail. {{ l.available }}</span>{% endif %}
+        </p>
+        <p class="src">{{ source_name(l.source) }}{% if l.manager.name and l.manager.name != source_name(l.source) %} · {{ l.manager.name }}{% endif %}</p>
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+</div>
+<p class="empty" id="empty" hidden>No listings match these filters.</p>
+<script id="data" type="application/json">{{ data_json|safe }}</script>
+{% endblock %}
+{% block scripts %}
+<script>window.REGION = {{ {"center": region.center, "zoom": region.zoom}|tojson }}; window.ROOT = "{{ root }}";</script>
+<script src="{{ root }}static/app.js?v={{ today }}"></script>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block body %}
+<section class="hero">
+  <h1>Student rentals around UCSB</h1>
+  <p>Whole-unit leases, subleases and rooms, collected every morning from local property managers and rental sites. Pick an area:</p>
+  <div class="tiles">
+    {% for key, r in regions.items() %}
+    <a class="tile" href="{{ r.slug }}/index.html">
+      <h2>{{ r.name }}</h2>
+      <p class="big">{{ counts[key] }}</p>
+      <p>listings{% if new_counts[key] %} · <span class="new">{{ new_counts[key] }} new today</span>{% endif %}</p>
+    </a>
+    {% endfor %}
+  </div>
+  <p class="muted">Isla Vista covers the student neighborhood next to campus. Santa Barbara covers the rest of the south coast, including Goleta outside IV, downtown Santa Barbara, Montecito and Carpinteria.</p>
+</section>
+{% endblock %}

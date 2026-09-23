@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Isla Vista Dispatch{% endblock %}</title>
+<meta name="description" content="{% block description %}Daily index of student rentals in Isla Vista and Santa Barbara{% endblock %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.min.css">
+<link rel="stylesheet" href="{{ root }}static/style.css?v={{ today }}">
+{% block head %}{% endblock %}
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="{{ root }}index.html">Isla Vista Dispatch</a>
+  <nav>
+    <a href="{{ root }}isla-vista/index.html" {% if region_key == 'isla_vista' %}class="on"{% endif %}>Isla Vista</a>
+    <a href="{{ root }}santa-barbara/index.html" {% if region_key == 'santa_barbara' %}class="on"{% endif %}>Santa Barbara</a>
+  </nav>
+  <span class="updated">Updated {{ today }}</span>
+</header>
+<main>
+{% block body %}{% endblock %}
+</main>
+<footer>
+  <p>Aggregated from public listings by property managers and rental sites. Verify every detail with the source before paying anything. Rents are whole-unit monthly unless marked per person.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

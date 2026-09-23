@@ -1,0 +1,49 @@
+name: Build and publish
+
+on:
+  schedule:
+    - cron: "0 14 * * *"   # 06:00 Pacific (07:00 during PST)
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Install
+        run: uv sync --frozen
+      - name: Tests
+        run: uv run pytest -q
+      - name: Scrape and build site
+        run: uv run scrape --site-url "${{ steps.pages.outputs.base_url }}"
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
