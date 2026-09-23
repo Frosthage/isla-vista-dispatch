@@ -76,7 +76,8 @@ def main() -> None:
             hit = geocode.geocode(lst.address, lst.city, lst.zip)
             if hit:
                 lst.lat, lst.lng = hit
-                lst.geo_precision = "geocoded"
+                if lst.geo_precision != "approx":
+                    lst.geo_precision = "geocoded"
         lst.region = geocode.classify_region(lst.lat, lst.lng, lst.city)
     dropped = [l for l in listings if l.region is None]
     if dropped:

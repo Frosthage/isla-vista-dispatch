@@ -18,6 +18,8 @@ LIST_URL = BASE + "/allhousing-ucsb-offcampus/"
 CATEGORIES = {"lease": "lease", "sublease": "sublease", "housemates_wanted": "room"}
 MAX_AGE_DAYS = 60
 MAX_PAGES = 15
+DETAIL_LIMIT = 80      # detail pages per run
+WALL_LIMIT = 3         # consecutive login walls before giving up on details
 
 
 def _age_days(text: str | None) -> int | None:
@@ -38,10 +40,11 @@ def _money(text: str | None) -> int | None:
     return int(m.group(1).replace(",", "")) if m else None
 
 
-def parse_list(html: str, kind: str) -> list[dict]:
-    """Card summaries: detail path, title, age in days, category label, price."""
+def parse_list(html: str, kind: str, today: date | None = None) -> list[Listing]:
+    """One Listing per card. Cards are public and carry title, street, beds/baths, type, price, photos and post age;
+    the detail page (when reachable) fills in house number, landlord, description and lease specifics."""
     soup = BeautifulSoup(html, "lxml")
-    out: list[dict] = []
+    out: list[Listing] = []
     seen: set[str] = set()
     for card in soup.select(".listing.list-view"):
         body = card.select_one(".listing-details")
@@ -51,144 +54,176 @@ def parse_list(html: str, kind: str) -> list[dict]:
         if path in seen:
             continue
         seen.add(path)
-        title = body.select_one(".list-view-title")
-        age = body.select_one(".created-time")
-        typ = body.select_one(".comments.type")
-        price = body.select_one(".lease-price")
+        m_id = re.search(r"/(\d+)/", path)
+        source_id = m_id.group(1) if m_id else path
+        title_el = body.select_one(".list-view-title")
+        title = title_el.get_text(strip=True) if title_el else path
+        head = body.select_one("p.job_p_list strong")
+        street = beds = baths = None
+        if head:
+            ht = head.get_text(" ", strip=True)
+            street = ht.split("·")[0].strip() or None
+            nums = re.findall(r"\d+(?:\.\d+)?", ht.split("·", 1)[1] if "·" in ht else "")
+            if nums:
+                beds = float(nums[0])
+            if len(nums) > 1:
+                baths = float(nums[1])
+        age_el = body.select_one(".created-time")
+        age = _age_days(age_el.get_text(strip=True) if age_el else None)
+        typ_el = body.select_one(".comments.type")
+        typ = typ_el.get_text(strip=True) if typ_el else None
+        price_el = body.select_one(".lease-price")
+        label_el = body.select_one(".rent-price-label")
+        price = _money(price_el.get_text() if price_el else None)
+        price_label = label_el.get_text(" ", strip=True) if label_el else ""
+        rows: dict[str, str] = {}
+        for p in body.select("p.job_p_list"):
+            txt = re.sub(r"\s+", " ", p.get_text(" ", strip=True))
+            if ":" in txt and not p.select_one("strong"):
+                k, _, v = txt.partition(":")
+                rows[k.strip()] = v.strip()
         photos = [img["src"] for img in card.select(".media img[src]") if "my-media-cdn" in img["src"]]
+        per_person = kind in ("sublease", "room") or "person" in price_label.lower()
+        amenities = [f"{k}: {v}" for k, v in rows.items() if k in ("Room Type", "Preferred Gender", "Tenants Wanted")]
         out.append(
-            {
-                "path": path,
-                "title": title.get_text(strip=True) if title else None,
-                "age_days": _age_days(age.get_text(strip=True) if age else None),
-                "type": typ.get_text(strip=True) if typ else None,
-                "price": _money(price.get_text() if price else None),
-                "kind": kind,
-                "photos": photos,
-            }
+            Listing(
+                id=f"myunistop:{source_id}",
+                source="myunistop",
+                source_url=BASE + path,
+                title=title,
+                address=street,
+                city="Isla Vista" if street and re.search(r"del playa|sabado tarde|trigo|pasado|sueno|abrego|picasso|segovia|cordoba|pardall|madrid|seville|cervantes|el nido|el greco|camino|embarcadero|el colegio|estero|fortuna|sabado", street, re.I) else None,
+                kind=kind,
+                rent=None if per_person else price,
+                rent_per_person=price if per_person else None,
+                rent_text=(price_label + " " if price_label else "") + (f"${price:,}" if price else "") or None,
+                beds=beds,
+                baths=baths,
+                available=rows.get("Availability") or rows.get("Dates"),
+                lease_term=rows.get("Dates"),
+                amenities=amenities,
+                photos=photos,
+                posted_at=((today or date.today()) - timedelta(days=age)).isoformat() if age is not None else None,
+                geo_precision="approx",   # street only until the detail page adds the house number
+            )
         )
     return out
 
 
-def parse_detail(html: str, path: str, kind: str, today: date | None = None) -> Listing | None:
+def parse_detail(html: str, lst: Listing) -> str:
+    """Fill lst from its detail page. Returns 'ok', 'wall' (login wall) or 'closed' (leasing closed)."""
+    if "Sign in to continue" in html:
+        return "wall"
     soup = BeautifulSoup(html, "lxml")
     info = soup.select_one(".information")
     if not info:
-        return None
+        return "wall"
     lines = [ln.strip() for ln in info.get_text("\n").split("\n") if ln.strip()]
     address_line = lines[0] if lines else ""
     landlord = lines[1] if len(lines) > 1 and "$" not in lines[1] else None
     price_el = info.select_one(".extra-title")
     price_text = price_el.get_text(" ", strip=True) if price_el else None
-    rent = _money(price_text)
-    per_person = None
-    if price_text:
-        pp = re.search(r"\$\s*([\d,]+)\s*(?:-\s*\$?[\d,]+)?\s*/\s*person", price_text)
-        if pp:
-            per_person = int(pp.group(1).replace(",", ""))
-        elif "/person" in price_text.replace(" ", "") and rent:
-            per_person, rent = rent, None
     specs: dict[str, str] = {}
     for block in soup.select(".detail-spec"):
         parts = [p.strip() for p in block.get_text("\n", strip=True).split("\n") if p.strip()]
         if len(parts) >= 2:
             specs.setdefault(parts[0], " · ".join(parts[1:]))
-    status = specs.get("Leasing Status", "")
-    if "closed" in status.lower():
-        return None
-    m_id = re.search(r"/(\d+)/", path)
-    source_id = m_id.group(1) if m_id else path
+    if "closed" in specs.get("Leasing Status", "").lower():
+        return "closed"
     street, _, city = address_line.partition(",")
     street = street.strip()
-    city = city.strip() or None
     unit = None
     mu = re.search(r"\s+(#\s*[\w-]+|(?:apt|unit)\.?\s*[\w-]+)$", street, re.I)
     if mu:
         unit = re.sub(r"^(#|apt\.?|unit)\s*", "", mu.group(1), flags=re.I)
         street = street[: mu.start()].strip()
-    desc_el = soup.select_one(".description .full-description, .description .short-description, .description")
-    description = desc_el.get_text("\n", strip=True) if desc_el else None
-    if description:
-        description = re.sub(r"\n?See More$", "", description).strip()
-    posted = soup.select_one(".specificDetails-posted-time")
-    age = _age_days(posted.get_text(strip=True) if posted else None)
-    posted_at = ((today or date.today()) - timedelta(days=age)).isoformat() if age is not None else None
-    photos: list[str] = []
-    for img in soup.select(".media img[src], .slider-media[src]"):
-        src = img.get("src") or ""
-        if "my-media-cdn" in src and src not in photos:
-            photos.append(src)
+    if street:
+        lst.address = street
+        lst.unit = unit
+        lst.geo_precision = None if re.match(r"\d", street) else "approx"
+    if city.strip():
+        lst.city = city.strip()
+    if price_text:
+        lst.rent_text = price_text
+        rent = _money(price_text)
+        pp = re.search(r"\$\s*([\d,]+)\s*(?:-\s*\$?[\d,]+)?\s*/\s*person", price_text)
+        if pp:
+            lst.rent_per_person = int(pp.group(1).replace(",", ""))
+            lst.rent = rent if "/mo" in price_text.replace(" ", "") and rent != lst.rent_per_person else None
+        elif rent:
+            if lst.kind == "lease":
+                lst.rent, lst.rent_per_person = rent, None
+            else:
+                lst.rent_per_person = rent
+    def num(k: str) -> float | None:
+        v = specs.get(k)
+        mm = re.search(r"\d+(?:\.\d+)?", v or "")
+        return float(mm.group()) if mm else None
+    lst.beds = num("Bedrooms") or lst.beds
+    lst.baths = num("Bathrooms") or lst.baths
+    lst.available = specs.get("Availability") or lst.available
+    lst.lease_term = specs.get("Lease Type & Max Residents") or specs.get("Lease Length") or lst.lease_term
+    lst.furnished = specs.get("Furnishing")
     utilities = specs.get("Utilities")
     if utilities:
         mi = re.search(r"Included in rent:\s*·?\s*(.*?)(?:\s*·\s*Tenant pays:.*)?$", utilities)
-        if mi:
-            utilities = mi.group(1).strip(" ·") or utilities
-    def beds_baths(k: str) -> float | None:
-        v = specs.get(k)
-        if not v:
-            return None
-        mm = re.search(r"\d+(?:\.\d+)?", v)
-        return float(mm.group()) if mm else None
-    title_el = soup.select_one("h1, .detail-title")
-    return Listing(
-        id=f"myunistop:{source_id}",
-        source="myunistop",
-        source_url=BASE + path,
-        title=(title_el.get_text(strip=True) if title_el and title_el.get_text(strip=True) else address_line) or address_line,
-        address=street or None,
-        unit=unit,
-        city=city,
-        kind=kind,
-        rent=rent,
-        rent_per_person=per_person,
-        rent_text=price_text,
-        beds=beds_baths("Bedrooms"),
-        baths=beds_baths("Bathrooms"),
-        available=specs.get("Availability"),
-        lease_term=specs.get("Lease Type & Max Residents") or specs.get("Lease Length"),
-        furnished=specs.get("Furnishing"),
-        utilities_included=utilities,
-        pets=specs.get("Pet Policy"),
-        parking=specs.get("Parking"),
-        laundry=specs.get("Laundry"),
-        amenities=[a for a in [specs.get("Room Type") and f"Room type: {specs['Room Type']}"] if a],
-        description=description,
-        photos=photos,
-        manager=Manager(name=landlord),
-        posted_at=posted_at,
-    )
+        utilities = (mi.group(1).strip(" ·") if mi else utilities) or None
+    lst.utilities_included = utilities
+    lst.pets = specs.get("Pet Policy")
+    lst.parking = specs.get("Parking")
+    lst.laundry = specs.get("Laundry")
+    if specs.get("Room Type"):
+        lst.amenities = [a for a in lst.amenities if not a.startswith("Room Type")] + [f"Room Type: {specs['Room Type']}"]
+    desc_el = soup.select_one(".description .full-description, .description .short-description, .description")
+    if desc_el:
+        lst.description = re.sub(r"\n?See More$", "", desc_el.get_text("\n", strip=True)).strip() or None
+    posted = soup.select_one(".specificDetails-posted-time")
+    age = _age_days(posted.get_text(strip=True) if posted else None)
+    if age is not None:
+        lst.posted_at = (date.today() - timedelta(days=age)).isoformat()
+    photos = [img["src"] for img in soup.select(".media img[src], .slider-media[src]") if "my-media-cdn" in (img.get("src") or "")]
+    if photos:
+        lst.photos = list(dict.fromkeys(photos))
+    if landlord:
+        lst.manager = Manager(name=landlord)
+    return "ok"
 
 
 def fetch() -> list[Listing]:
-    out: list[Listing] = []
     today = date.today()
+    cards: list[Listing] = []
     for category, kind in CATEGORIES.items():
         for page in range(1, MAX_PAGES + 1):
             html = http.get_text(LIST_URL, params={"page": page, "category": category})
             if not html:
                 break
-            cards = parse_list(html, kind)
-            if not cards:
+            got = parse_list(html, kind, today)
+            if not got:
                 break
-            fresh = [c for c in cards if c["age_days"] is None or c["age_days"] <= MAX_AGE_DAYS]
-            with ThreadPoolExecutor(max_workers=4) as ex:   # responses take several seconds; starts stay 1/s
-                details = list(ex.map(lambda c: http.get_text(BASE + c["path"]), fresh))
-            for c, detail in zip(fresh, details):
-                if not detail:
-                    continue
-                lst = parse_detail(detail, c["path"], kind, today)
-                if lst is None:
-                    continue
-                if c["title"] and lst.title == (lst.address or ""):
-                    lst.title = c["title"]
-                if not lst.photos:
-                    lst.photos = c["photos"]
-                if lst.rent is None and lst.rent_per_person is None and c["price"]:
-                    lst.rent = c["price"]
-                out.append(lst)
-            if len(fresh) < len(cards):
-                break   # listings are newest-first; the rest of this category is stale
-            if not re.search(rf'href="\?page={page + 1}', html):
-                break
-        log.info("%s: %d listings so far", category, len(out))
+            fresh = [l for l in got if l.posted_at is None or (today - date.fromisoformat(l.posted_at)).days <= MAX_AGE_DAYS]
+            cards.extend(fresh)
+            if len(fresh) < len(got) or not re.search(rf'href="\?page={page + 1}', html):
+                break   # newest first; the rest of this category is stale
+        log.info("%s: %d fresh cards", category, len(cards))
+    # Detail pages sit behind a per-IP login wall after a few dozen views, so enrich newest-first,
+    # one request at a time, and stop once the wall is up.
+    cards.sort(key=lambda l: l.posted_at or "", reverse=True)
+    out: list[Listing] = []
+    walls = 0
+    enriched = 0
+    for lst in cards:
+        status = None
+        if walls < WALL_LIMIT and enriched < DETAIL_LIMIT:
+            html = http.get_text(lst.source_url)
+            if html:
+                status = parse_detail(html, lst)
+                if status == "wall":
+                    walls += 1
+                else:
+                    walls = 0
+                    enriched += 1
+        if status == "closed":
+            continue
+        out.append(lst)
+    log.info("%d listings, %d enriched from detail pages, stopped by login wall: %s", len(out), enriched, walls >= WALL_LIMIT)
     return out

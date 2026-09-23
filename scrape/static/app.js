@@ -14,12 +14,14 @@
     var img = d.photo ? '<img src="' + (d.photo.indexOf('http') === 0 ? '' : ROOT) + d.photo + '" alt="">' : '';
     return img + '<a class="pp-title" href="' + ROOT + 'l/' + d.id + '.html">' + d.title + '</a>' +
       (d.address ? d.address + (d.unit ? ' #' + d.unit : '') + '<br>' : '') +
-      '<strong>' + money(d.rent) + '</strong>' + (d.beds != null ? ' · ' + d.beds + ' bd' : '') + (d.new ? ' · <span style="color:#0f9d58">New</span>' : '');
+      '<strong>' + money(d.rent) + '</strong>' + (d.beds != null ? ' · ' + d.beds + ' bd' : '') + (d.new ? ' · <span style="color:#0f9d58">New</span>' : '') + (d.approx ? '<br><small>approximate location</small>' : '');
   }
   var colors = { lease: '#0a66c2', sublease: '#b25e09', room: '#7a3db8' };
   data.forEach(function (d) {
     if (d.lat == null) return;
-    var m = L.circleMarker([d.lat, d.lng], { radius: 8, color: '#fff', weight: 1.5, fillColor: colors[d.kind] || '#333', fillOpacity: 0.95 });
+    var m = L.circleMarker([d.lat, d.lng], d.approx
+      ? { radius: 8, color: colors[d.kind] || '#333', weight: 2, dashArray: '3 3', fillColor: colors[d.kind] || '#333', fillOpacity: 0.35 }
+      : { radius: 8, color: '#fff', weight: 1.5, fillColor: colors[d.kind] || '#333', fillOpacity: 0.95 });
     m.bindPopup(popup(d));
     m.on('click', function () {
       document.querySelectorAll('.card.active').forEach(function (c) { c.classList.remove('active'); });

@@ -50,7 +50,7 @@
     </section>
     <aside>
       <div id="minimap" class="minimap"></div>
-      {% if l.geo_precision == 'geocoded' %}<p class="muted small">Pin placed by geocoding the address.</p>{% endif %}
+      {% if l.geo_precision == 'geocoded' %}<p class="muted small">Pin placed by geocoding the address.</p>{% elif l.geo_precision == 'approx' %}<p class="muted small">Approximate: the post gives only the street. Open the source for the exact address.</p>{% endif %}
       <h2>Listed by</h2>
       <p><strong>{{ l.manager.name or source_name(l.source) }}</strong></p>
       {% if l.manager.phone %}<p><a href="tel:{{ l.manager.phone|replace(' ', '')|replace('(', '')|replace(')', '')|replace('-', '') }}">{{ l.manager.phone }}</a></p>{% endif %}

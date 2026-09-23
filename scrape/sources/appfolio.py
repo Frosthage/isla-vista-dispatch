@@ -117,6 +117,8 @@ def parse_list(html: str, slug: str) -> list[Listing]:
             src = img.get("data-original") or img.get("src") or ""
             if src and PLACEHOLDER not in src:
                 photos.append(src.replace("/medium.jpg", "/large.jpg"))
+        if rent_el is None or not re.search(r"\d", rent_el.get_text()) or re.search(r"application", title, re.I):
+            continue   # generic application placeholders, not units
         marker = markers.get(path, {})
         lat = marker.get("latitude")
         lng = marker.get("longitude")

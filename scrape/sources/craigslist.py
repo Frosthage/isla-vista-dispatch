@@ -121,9 +121,9 @@ def parse_detail(html: str, url: str, kind: str, location: str | None = None) ->
     posted_at = time_el["datetime"] if time_el else None
     city = None
     if location:
-        city = location
-    elif address:
-        pass
+        loc = re.sub(r",?\s*CA\b.*$", "", location.strip())
+        if loc and not re.search(r"\d", loc) and "," not in loc and len(loc) <= 40:
+            city = loc.title() if loc.isupper() or loc.islower() else loc
     return Listing(
         id=f"craigslist:{source_id}",
         source="craigslist",

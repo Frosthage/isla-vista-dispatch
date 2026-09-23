@@ -44,6 +44,7 @@
           {% if l.baths is not none %}<span>{{ l.baths|num }} ba</span>{% endif %}
           {% if l.sqft %}<span>{{ l.sqft }} sqft</span>{% endif %}
           {% if l.available %}<span>Avail. {{ l.available }}</span>{% endif %}
+          {% if l.geo_precision == 'approx' %}<span class="muted" title="Only the street is known; pin is approximate">≈ location</span>{% endif %}
         </p>
         <p class="src">{{ source_name(l.source) }}{% if l.manager.name and l.manager.name != source_name(l.source) %} · {{ l.manager.name }}{% endif %}</p>
       </div>

@@ -68,8 +68,10 @@ def _allowed(url: str) -> bool:
     return rp.can_fetch("*", url)
 
 
-def get(url: str, *, params: dict | None = None, headers: dict | None = None, retries: int = 3) -> httpx.Response | None:
-    """GET with throttle/retry. Returns None on 4xx/5xx after retries or robots disallow."""
+def get(url: str, *, params: dict | None = None, headers: dict | None = None, retries: int = 3, respect_robots: bool = True) -> httpx.Response | None:
+    """GET with throttle/retry. Returns None on 4xx/5xx after retries or robots disallow.
+
+    respect_robots=False is for JSON APIs whose own usage policy we follow (Nominatim), where robots.txt targets crawlers."""
     req = _client.build_request("GET", url, params=params, headers=headers)
     full = str(req.url)
     key = hashlib.sha1(full.encode()).hexdigest()
@@ -77,12 +79,13 @@ def get(url: str, *, params: dict | None = None, headers: dict | None = None, re
     if cache_enabled and cache_file.exists():
         d = json.loads(cache_file.read_text())
         return httpx.Response(d["status"], text=d["text"], request=req)
-    if not _allowed(full):
+    if respect_robots and not _allowed(full):
         log.warning("robots.txt disallows %s", full)
         return None
     host = urlsplit(full).netloc
     for attempt in range(retries):
         _throttle(host)
+        _client.cookies.clear()   # no sessions: some sites (MyUniStop) put a login wall on a session after N page views
         try:
             r = _client.send(req)
         except httpx.HTTPError as e:

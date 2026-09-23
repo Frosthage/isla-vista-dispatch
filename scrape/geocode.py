@@ -72,6 +72,7 @@ def geocode(address: str, city: str | None = None, zip_code: str | None = None) 
         "https://nominatim.openstreetmap.org/search",
         params={"format": "json", "limit": 1, "q": q, "countrycodes": "us"},
         headers={"User-Agent": http.UA},
+        respect_robots=False,   # Nominatim usage policy: 1 req/s, identifying UA, cache results; all done here
     )
     result = None
     if r is not None:
