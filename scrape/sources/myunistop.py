@@ -18,7 +18,7 @@ LIST_URL = BASE + "/allhousing-ucsb-offcampus/"
 CATEGORIES = {"lease": "lease", "sublease": "sublease", "housemates_wanted": "room"}
 MAX_AGE_DAYS = 60
 MAX_PAGES = 15
-DETAIL_LIMIT = 80      # detail pages per run
+DETAIL_LIMIT = 120     # detail pages per run
 WALL_LIMIT = 3         # consecutive login walls before giving up on details
 
 
@@ -119,8 +119,12 @@ def parse_detail(html: str, lst: Listing) -> str:
     if not info:
         return "wall"
     lines = [ln.strip() for ln in info.get_text("\n").split("\n") if ln.strip()]
-    address_line = lines[0] if lines else ""
-    landlord = lines[1] if len(lines) > 1 and "$" not in lines[1] else None
+    # Property-manager leases open with "6710 Trigo Rd, Isla Vista" then the company; student posts open with the title.
+    addr_idx = next((i for i, ln in enumerate(lines[:3]) if re.match(r"^\d+\s+\w", ln) or re.search(r",\s*(Isla Vista|Goleta|Santa Barbara)", ln)), None)
+    address_line = lines[addr_idx] if addr_idx is not None else ""
+    landlord = None
+    if lst.kind == "lease" and addr_idx is not None and len(lines) > addr_idx + 1 and "$" not in lines[addr_idx + 1]:
+        landlord = lines[addr_idx + 1]
     price_el = info.select_one(".extra-title")
     price_text = price_el.get_text(" ", strip=True) if price_el else None
     specs: dict[str, str] = {}
@@ -205,9 +209,11 @@ def fetch() -> list[Listing]:
             if len(fresh) < len(got) or not re.search(rf'href="\?page={page + 1}', html):
                 break   # newest first; the rest of this category is stale
         log.info("%s: %d fresh cards", category, len(cards))
-    # Detail pages sit behind a per-IP login wall after a few dozen views, so enrich newest-first,
-    # one request at a time, and stop once the wall is up.
-    cards.sort(key=lambda l: l.posted_at or "", reverse=True)
+    # Detail pages sit behind a per-IP login wall after many views, so fetch them one at a time and stop once
+    # the wall is up. Student posts (sublease/room) go first, newest first; they stay in the site even without
+    # a detail page. Property-manager leases have no date on the card and may be "Leasing Closed", so they
+    # are kept only when their detail page was read and says open (AppFolio covers most of them anyway).
+    cards.sort(key=lambda l: (l.kind == "lease", -(date.fromisoformat(l.posted_at).toordinal() if l.posted_at else 0)))
     out: list[Listing] = []
     walls = 0
     enriched = 0
@@ -222,7 +228,7 @@ def fetch() -> list[Listing]:
                 else:
                     walls = 0
                     enriched += 1
-        if status == "closed":
+        if status == "closed" or (lst.kind == "lease" and status != "ok"):
             continue
         out.append(lst)
     log.info("%d listings, %d enriched from detail pages, stopped by login wall: %s", len(out), enriched, walls >= WALL_LIMIT)

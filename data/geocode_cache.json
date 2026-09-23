@@ -1,15 +1,27 @@
 {
 "100 Baldwin Dr (Plan A1), Goleta, CA": null,
+"100 Baldwin Dr (Plan A11), Goleta, CA": null,
 "100 Baldwin Dr (Plan A2), Goleta, CA": null,
+"100 Baldwin Dr (Plan A6), Goleta, CA": null,
+"100 Baldwin Dr (Plan B2), Goleta, CA": null,
 "100 Baldwin Dr (Plan B5), Goleta, CA": null,
 "100 Baldwin Dr (Plan C1), Goleta, CA": null,
+"100 Baldwin Dr (Plan S2), Goleta, CA": null,
+"100 Cortona Point Dr (One Bedroom A), Goleta, CA": null,
+"100 Cortona Point Dr (Three Bedroom A), Goleta, CA": null,
 "100 Cortona Point Dr (Two Bedroom A), Goleta, CA": null,
 "1001 El Embarcadero Rd (UNIT A: 2-BEDROOM), Isla Vista, CA": null,
 "1001 El Embarcadero Rd (UNIT B: 1-BEDROOM), Isla Vista, CA": null,
+"1001 El Embarcadero Rd (UNIT C: 1-BEDROOM), Isla Vista, CA": null,
 "1015 El Embarcadero Rd (UNIT 1: STUDIO), Goleta, CA": null,
+"1015 El Embarcadero Rd (UNIT 1: STUDIO), Goleta, Isla Vista, CA": null,
 "1015 El Embarcadero Rd (UNIT 2: STUDIO), Goleta, CA": null,
+"1015 El Embarcadero Rd (UNIT 2: STUDIO), Goleta, Isla Vista, CA": null,
+"1015 El Embarcadero Rd (UNIT 3: 1-BEDROOM), Goleta, Isla Vista, CA": null,
 "1015 El Embarcadero Rd (UNIT 4: 1-BEDROOM), Goleta, CA": null,
+"1015 El Embarcadero Rd (UNIT 4: 1-BEDROOM), Goleta, Isla Vista, CA": null,
 "1015 El Embarcadero Rd (UNIT 5: 1-BEDROOM), Goleta, CA": null,
+"1015 El Embarcadero Rd (UNIT 5: 1-BEDROOM), Goleta, Isla Vista, CA": null,
 "102 N. Hope Avenue, Santa Barbara, CA 93110": null,
 "1020 Cacique Street, Santa Barbara, CA 93103": null,
 "1031 El Embarcadero Rd, Isla Vista, CA": {
@@ -18,12 +30,18 @@
 "lng": -119.8564442
 },
 "1050 E Foothill Blvd, Single-room in shared apartment, CA": null,
+"1050 Foothill Blvd, CA": {
+"display": "1050, Foothill Boulevard, San Luis Obispo, San Luis Obispo County, California, 93407, United States",
+"lat": 35.296124,
+"lng": -120.667985
+},
 "1231 Chino Street, Santa Barbara, CA 93101": null,
 "1313 Olive Street, Santa Barbara, CA 93101": null,
 "1521 Laguna Street, Santa Barbara, CA 93101": null,
 "165 N. 5th Street, Port Hueneme, CA 93041": null,
 "2 Rooms in Spacious 3BR Home \u2013 Westside Santa Barbara, CA": null,
 "2 Spots Open at 6507 Del Playa Oceanside \u2013 Male Double Room, CA": null,
+"2 Spots Open at 6507 Del Playa Oceanside \u2013 Male Double Room, Isla Vista, CA": null,
 "2160 Ortega Hill Road, Summerland, CA 93067": null,
 "218 S Salinas Street, Santa Barbara, CA 93103": null,
 "219 Balboa Drive, Santa Barbara, CA 93109": null,
@@ -36,15 +54,19 @@
 "305 Ladera Street, Santa Barbara, CA 93101": null,
 "312 Ellwood Beach Drive, Goleta, CA 93117": null,
 "3442 Richland Drive, Santa Barbara, CA 93105": null,
+"3885 State St (PLAN 3A), Santa Barbara, CA": null,
 "3885 State St (PLAN A2), Santa Barbara, CA": null,
 "4140 Via Real, Carpinteria, CA 93013": null,
 "420-450 S. Elm Street, Arroyo Grande, CA 93420": null,
+"425 Garden St (Three Bedroom One Bathroom 3C), Santa Barbara, CA": null,
 "425 Garden St (Three Bedroom Two Bathroom 3A), Santa Barbara, CA": null,
 "425 Garden St (Three Bedroom Two Bathroom 3B), Santa Barbara, CA": null,
 "425 Garden St (Two Bedroom One Bathroom 2E), Santa Barbara, CA": null,
+"425 Garden St (Two Bedroom One Bathroom 2F), Santa Barbara, CA": null,
 "425 Garden St (Two Bedroom One Bathroom 2G), Santa Barbara, CA": null,
 "425 Garden St (Two Bedroom Two Bathroom 2A), Santa Barbara, CA": null,
 "425 Garden St (Two Bedroom Two Bathroom 2B/2C), Santa Barbara, CA": null,
+"425 Garden St (Two Bedroom Two Bathroom 2D), Santa Barbara, CA": null,
 "442 Ellwood Beach Drive, Goleta, CA 93117": null,
 "444 Alan Road, Santa Barbara, CA 93109": null,
 "520 W Gutierrez Street, Santa Barbara, CA 93101": null,
@@ -57,16 +79,48 @@
 "568 Ocean Meadows Ln (5BR/5.5BA \u2013 Sunrise 11), Goleta, CA": null,
 "568 Ocean Meadows Ln (6BR/6.5BA \u2013 Coral w/ Casita), Goleta, CA": null,
 "568 Ocean Meadows Ln (6BR/6.5BA \u2013 Harbor w/ Casita), Goleta, CA": null,
+"568 Ocean Meadows Ln, CA": {
+"display": "568, Ocean Meadows Lane, The Cove, Goleta, Santa Barbara County, California, 93117, United States",
+"lat": 34.4203416,
+"lng": -119.8716898
+},
 "5839 Encina Rd (Hummingbird), Goleta, CA": null,
+"5839 Encina Rd (Monarch), Goleta, CA": null,
 "60 Willow Springs Ln (CHUMASH), Goleta, CA": null,
+"60 Willow Springs Ln (Los Carneros), Goleta, CA": null,
+"60 Willow Springs Ln (Ojai), Goleta, CA": null,
+"60 Willow Springs Ln (PISMO), Goleta, CA": null,
+"60 Willow Springs Ln (TRAIL), Goleta, CA": null,
 "60 Willow Springs Ln (Topatopa), Goleta, CA": null,
 "601 East Anapamu Street, Santa Barbara, CA 93103": null,
 "605 W Canon Perdido Street, Santa Barbara, CA 93101": null,
 "627 De La Vina Street, Santa Barbara, CA 93101": null,
+"6505 Pardall Rd, Isla Vista, CA": {
+"display": "6505, Pardall Road, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4129289,
+"lng": -119.8540157
+},
 "6505 Sea Star Ct (1 Bedroom + 1 Bath | Arrive I), Goleta, CA": null,
 "6505 Sea Star Ct (2 Bedroom + 2 Bath | Arrive II), Goleta, CA": null,
+"6505 Sea Star Ct (3 Bedroom + 2.5 Bath | Arrive II), Goleta, CA": null,
+"6510 El Colegio Rd, Isla Vista, CA": {
+"display": "6510, El Colegio Road, Isla Vista, Santa Barbara County, California, 93106, United States",
+"lat": 34.4173603,
+"lng": -119.8547976
+},
 "6510 Picasso Rd (Park Place), Isla Vista, CA": null,
+"6510 Picasso Rd, Isla Vista, CA": {
+"display": "Park Place Apartments, 6510, Picasso Road, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4152969,
+"lng": -119.8537881
+},
+"6511 Trigo Rd, Goleta, Isla Vista, CA": null,
+"6512 Segovia Rd (Aladdin), Goleta, Isla Vista, CA": null,
+"6512 Seville Rd, Goleta, Isla Vista, CA": null,
+"6516 Del Playa Dr, Goleta, Isla Vista, CA": null,
+"6517 Trigo Rd, Goleta, Isla Vista, CA": null,
 "6518 Del Playa Dr, Goleta, CA": null,
+"6518 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6521 Del Playa Dr, Isla Vista, CA": {
 "display": "6521, Del Playa Drive, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
 "lat": 34.4088866,
@@ -77,22 +131,36 @@
 "lat": 34.4102109,
 "lng": -119.8547265
 },
+"6522 Sabado Tarde Rd (Seaside), Goleta, Isla Vista, CA": null,
 "6525 Del Playa Dr, Goleta, CA": null,
+"6525 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6530 Seville Rd (4x2 - Double), Goleta, CA": null,
+"6530 Seville Rd (4x2 - Double), Goleta, Isla Vista, CA": null,
+"6530 Seville Rd (Studio - Double), Goleta, Isla Vista, CA": null,
+"6531 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6531 Sabado Tarde Rd (Laguna), Goleta, CA": null,
+"6531 Sabado Tarde Rd (Laguna), Goleta, Isla Vista, CA": null,
 "6533 El Nido Ln, Goleta, CA": null,
+"6533 El Nido Ln, Goleta, Isla Vista, CA": null,
 "6534 Del Playa Dr, Isla Vista, CA": {
 "display": "6534, Del Playa Drive, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
 "lat": 34.409572,
 "lng": -119.8552485
 },
 "6535 El Nido Ln, Goleta, CA": null,
+"6535 El Nido Ln, Goleta, Isla Vista, CA": null,
 "6536 Del Playa Dr, Isla Vista, CA": {
 "display": "6536, Del Playa Drive, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
 "lat": 34.4094891,
 "lng": -119.8554092
 },
 "6547 Cordoba Road, Goleta, CA 93117": null,
+"6548 Cordoba Rd (Coastline), Goleta, Isla Vista, CA": null,
+"6551 Segovia Rd, Isla Vista, CA": {
+"display": "6551, Segovia Road, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4142698,
+"lng": -119.8560471
+},
 "6552 Del Playa Dr, Isla Vista, CA": {
 "display": "6552, Del Playa Drive, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
 "lat": 34.4096146,
@@ -103,55 +171,146 @@
 "lat": 34.4096586,
 "lng": -119.85674
 },
+"6554 Del Playa Dr, Goleta, Isla Vista, CA": {
+"display": "6554, Del Playa Drive, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4096586,
+"lng": -119.85674
+},
 "6555 Del Playa Dr, Goleta, CA": null,
+"6555 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6556 Del Playa Dr, Isla Vista, CA": {
 "display": "6556, Del Playa Drive, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
 "lat": 34.4099533,
 "lng": -119.8567285
 },
+"6557 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6558 Del Playa Dr, Goleta, CA": {
 "display": "6558, Del Playa Drive, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
 "lat": 34.4097021,
 "lng": -119.8569003
+},
+"6558 Del Playa Dr, Goleta, Isla Vista, CA": {
+"display": "6558, Del Playa Drive, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4097021,
+"lng": -119.8569003
+},
+"6559 Sabado Tarde Rd, Goleta, Isla Vista, CA": null,
+"6559 Sabado Tarde Rd, Isla Vista, CA": {
+"display": "6559, Sabado Tarde Road, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4103437,
+"lng": -119.8567468
 },
 "6560 Del Playa Dr, Goleta, CA": {
 "display": "6560, Del Playa Drive, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
 "lat": 34.4098211,
 "lng": -119.8569054
 },
+"6560 Del Playa Dr, Goleta, Isla Vista, CA": {
+"display": "6560, Del Playa Drive, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4098211,
+"lng": -119.8569054
+},
 "6561 Del Playa Dr, Goleta, CA": null,
+"6561 Del Playa Dr, Isla Vista, CA": {
+"display": "6561, Del Playa Drive, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4091772,
+"lng": -119.8569559
+},
+"6561 Sabado Tarde Rd, Goleta, Isla Vista, CA": null,
 "6562 Del Playa Dr, Goleta, CA": null,
+"6563 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6563 Trigo Rd, Goleta, CA": null,
+"6563 Trigo Rd, Goleta, Isla Vista, CA": null,
 "6563 Trigo Rd, Isla Vista, CA": {
 "display": "6563, Trigo Road, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
 "lat": 34.4109741,
 "lng": -119.8575091
 },
+"6565 Segovia Rd, Goleta, Isla Vista, CA": null,
+"6565 Trigo Rd #4/5, Goleta, Isla Vista, CA": null,
+"6565 Trigo Rd #6/7, Goleta, Isla Vista, CA": null,
+"6565 Trigo Rd, Goleta, Isla Vista, CA": null,
+"6566 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6567 Del Playa Dr, Goleta, CA": null,
+"6567 Del Playa Dr, Goleta, Isla Vista, CA": null,
+"6569 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6571 Del Playa Dr, Goleta, CA": null,
+"6571 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6573 Del Playa Dr, Goleta, CA": null,
+"6573 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6575 Del Playa Dr, Goleta, CA": null,
+"6575 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6577 Del Playa Dr, Isla Vista, CA": {
 "display": "6577, Del Playa Drive, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
 "lat": 34.4093451,
 "lng": -119.8576988
 },
+"6579 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6581 Del Playa Dr, Goleta, CA": null,
+"6581 Del Playa Dr, Goleta, Isla Vista, CA": null,
+"6582 Sabado Tarde Rd, Isla Vista, CA": {
+"display": "6582, Sabado Tarde Road, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4106178,
+"lng": -119.8582305
+},
+"6583 Cordoba Rd, Goleta, Isla Vista, CA": null,
 "6583 Del Playa Dr, Goleta, CA": null,
+"6583 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6585 Del Playa Dr, Goleta, CA": null,
+"6585 Del Playa Dr, Goleta, Isla Vista, CA": null,
+"6585 El Colegio Rd, Goleta, Isla Vista, CA": {
+"display": "6585, El Colegio Road, Goleta, Santa Barbara County, California, 93117, United States",
+"lat": 34.416858,
+"lng": -119.857848
+},
+"6585 El Colegio Rd, Isla Vista, CA": {
+"display": "Tropicana Gardens, 6585, El Colegio Road, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4168914,
+"lng": -119.8574466
+},
+"6587 Cervantes Rd, Goleta, Isla Vista, CA": null,
+"6589 Del Playa Dr, Isla Vista, CA": {
+"display": "6589, Del Playa Drive, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4093538,
+"lng": -119.8582244
+},
+"6589 Picasso Rd, Isla Vista, CA": {
+"display": "Reif Apartments, 6589, Picasso Road, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4149191,
+"lng": -119.8580592
+},
 "6591 Cordoba Rd, Isla Vista, CA": {
 "display": "6591, Cordoba Road, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
 "lat": 34.4136366,
 "lng": -119.8581796
+},
+"6593 Sabado Tarde Rd, Isla Vista, CA": {
+"display": "6593, Sabado Tarde Road, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4102385,
+"lng": -119.8580461
 },
 "6595 Del Playa Dr, Goleta, CA": {
 "display": "6595, Del Playa Drive, 65 Block, Goleta, Santa Barbara County, California, 93117, United States",
 "lat": 34.409276,
 "lng": -119.858352
 },
+"6595 Del Playa Dr, Goleta, Isla Vista, CA": {
+"display": "6595, Del Playa Drive, 65 Block, Goleta, Santa Barbara County, California, 93117, United States",
+"lat": 34.409276,
+"lng": -119.858352
+},
 "6597 Del Playa Dr, Goleta, CA": null,
+"6597 Del Playa Dr, Goleta, Isla Vista, CA": null,
+"6597 Trigo Rd, Goleta, Isla Vista, CA": null,
 "6598 Del Playa Dr, Goleta, CA": null,
+"6598 Del Playa Dr, Goleta, Isla Vista, CA": null,
+"6598 Trigo Rd, Isla Vista, CA": {
+"display": "6598, Trigo Road, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4113225,
+"lng": -119.8583633
+},
 "6599 Del Playa Dr, Goleta, CA": null,
+"6599 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "66 Ocean View Avenue, Santa Barbara, CA 93103": null,
 "6602 Del Playa Dr, Isla Vista, CA": {
 "display": "6602, Del Playa Drive, 66 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
@@ -159,28 +318,52 @@
 "lng": -119.8588724
 },
 "6618 Sueno Rd, Goleta, CA": null,
+"6618 Sueno Rd, Goleta, Isla Vista, CA": null,
+"6621 Abrego Rd (Penthouse Apartments), Goleta, Isla Vista, CA": null,
+"6621 Picasso Rd, Isla Vista, CA": {
+"display": "The Picasso Apartments, 6621, Picasso Road, 66 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4149141,
+"lng": -119.8594382
+},
+"6622 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6626 Trigo Rd, Goleta, CA": null,
+"6626 Trigo Rd, Goleta, Isla Vista, CA": null,
 "6631 Del Playa Dr, Goleta, CA": null,
+"6631 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6633 Del Playa Dr, Goleta, CA": null,
+"6633 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6636 Del Playa Dr, Goleta, CA": {
 "display": "6636, Del Playa Drive, 66 Block, Goleta, Santa Barbara County, California, 93117, United States",
 "lat": 34.409948,
 "lng": -119.86017
 },
+"6636 Del Playa Dr, Goleta, Isla Vista, CA": {
+"display": "6636, Del Playa Drive, 66 Block, Goleta, Santa Barbara County, California, 93117, United States",
+"lat": 34.41004,
+"lng": -119.860164
+},
+"6639 Abrego Rd, Goleta, Isla Vista, CA": null,
 "6639 Picasso Rd, Goleta, CA": null,
+"6639 Picasso Rd, Goleta, Isla Vista, CA": null,
 "6640 Abrego Rd, Goleta, CA": null,
+"6640 Abrego Rd, Goleta, Isla Vista, CA": null,
 "6641 Del Playa Dr, Goleta, CA": null,
+"6641 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6643 Abrego Road, Goleta, CA 93117": null,
 "6643 Del Playa Dr, Goleta, CA": null,
+"6643 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6647 Del Playa Dr, Goleta, CA": null,
 "6649 Del Playa Dr, Goleta, CA": null,
+"6649 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6653 Del Playa Dr, Isla Vista, CA": {
 "display": "6653, Del Playa Drive, 66 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
 "lat": 34.4095473,
 "lng": -119.86103
 },
 "6655 Sabado Tarde Rd, Isla Vista, CA 93117": null,
+"6656 Picasso Rd, Goleta, Isla Vista, CA": null,
 "6657 El Colegio Rd, Goleta, CA": null,
+"6657 El Colegio Rd, Goleta, Isla Vista, CA": null,
 "6661 Berkshire Terrace, Goleta, CA": null,
 "6661 Berkshire Terrace, Goleta, CA 93117": null,
 "6665 Del Playa Dr, Isla Vista, CA": {
@@ -190,66 +373,252 @@
 },
 "6667 El Colegio Rd, Isla Vista, CA 93117": null,
 "6669 Del Playa Dr, Goleta, CA": null,
+"6669 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6671 Del Playa Dr, Isla Vista, CA": {
 "display": "6671, Del Playa Drive, 66 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
 "lat": 34.4096955,
 "lng": -119.861313
 },
 "6672 Abrego Rd (Breakpointe 1x1B), Goleta, CA": null,
+"6672 Abrego Rd (Breakpointe 1x1B), Goleta, Isla Vista, CA": null,
 "6672 Abrego Rd (Coronado 1x1A), Goleta, CA": null,
 "6675 ST / 6680 DP, Goleta, CA 93117": null,
 "6679 Del Playa Dr, Goleta, CA": null,
+"6679 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6681 Berkshire Terrace, Goleta, CA": null,
 "6681 Berkshire Terrace, Goleta, CA 93117": null,
 "6681 Del Playa Dr, Goleta, CA": null,
+"6681 Sueno Rd, Isla Vista, CA": {
+"display": "6681, Sueno Road, 66 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4123974,
+"lng": -119.8620917
+},
 "6682 Trigo Rd, Goleta, CA": null,
+"6682 Trigo Rd, Goleta, Isla Vista, CA": null,
 "6689 El Colegio Rd, Goleta, CA": null,
+"6689 El Colegio Rd, Goleta, Isla Vista, CA": null,
+"6689 El Colegio Rd, Isla Vista, CA": {
+"display": "One Mosaic Apartments, 6689, El Colegio Road, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.416759,
+"lng": -119.8623451
+},
 "6701 Del Playa Dr, Goleta, CA": null,
+"6701 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6705 Del Playa Dr, Goleta, CA": null,
+"6705 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6707 Del Playa Dr, Goleta, CA": null,
+"6707 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6709 Del Playa Dr, Goleta, CA": null,
+"6709 Del Playa Dr, Goleta, Isla Vista, CA": null,
+"6714 Sabado Tarde Rd, Isla Vista, CA": {
+"display": "6714, Sabado Tarde Road, 67 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4106752,
+"lng": -119.8632474
+},
+"6721 Sabado Tarde Rd, Goleta, Isla Vista, CA": null,
+"6723 Sabado Tarde Rd, Isla Vista, CA": {
+"display": "6723, Sabado Tarde Road, 67 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4103886,
+"lng": -119.8635614
+},
 "6730 Del Playa Dr, Goleta, CA": null,
+"6730 Del Playa Dr, Goleta, Isla Vista, CA": null,
+"6732 Del Playa Dr, Isla Vista, CA": {
+"display": "6732, Del Playa Drive, 67 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4100239,
+"lng": -119.8637508
+},
+"6732 Sabado Tarde Rd, Goleta, Isla Vista, CA": null,
 "6736 Sueno Rd, Goleta, CA": null,
+"6736 Sueno Rd, Goleta, Isla Vista, CA": null,
+"6739 El Colegio Rd, Isla Vista, CA": {
+"display": "The Tahitian, 6739, El Colegio Road, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.416783,
+"lng": -119.8643856
+},
 "6741 Del Playa Dr, Goleta, CA": null,
+"6741 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6743 Del Playa Dr, Goleta, CA": null,
+"6743 Del Playa Dr, Goleta, Isla Vista, CA": null,
+"6753 Sabado Tarde Rd, Isla Vista, CA": {
+"display": "6753, Sabado Tarde Road, 67 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4102691,
+"lng": -119.8648265
+},
 "6766 Del Playa Dr, Goleta, CA": null,
+"6766 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6767 Sabado Tarde Rd, Goleta, CA": null,
 "6773 Del Playa Dr, Goleta, CA": null,
+"6773 Del Playa Dr, Goleta, Isla Vista, CA": null,
 "6777 Del Playa Dr, Goleta, CA": null,
+"6777 Del Playa Dr, Goleta, Isla Vista, CA": null,
+"6789 Estero Rd, Isla Vista, CA": {
+"display": "6789, Estero Road, 67 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4134106,
+"lng": -119.8657619
+},
+"6798 Del Playa Dr, Isla Vista, CA": {
+"display": "6798, Del Playa Drive, 67 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4100024,
+"lng": -119.8663063
+},
+"6798 Sabado Tarde Rd, Goleta, Isla Vista, CA": null,
+"6798 Sabado Tarde Rd, Isla Vista, CA": {
+"display": "6798, Sabado Tarde Road, 67 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4106911,
+"lng": -119.8662907
+},
+"6845 Pasado Rd, Goleta, Isla Vista, CA": null,
 "6880 Pasado Rd, Goleta, CA": null,
+"6880 Pasado Rd, Goleta, Isla Vista, CA": null,
+"7170 Davenport Rd (Koi Floor Plan), Goleta, CA": null,
 "741 Janetwood Drive, Oxnard, CA 93030": null,
+"759 Embarcadero del Mar, Isla Vista, CA": {
+"display": "The University Tropicana Apartments, 759, Embarcadero del Mar, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4162448,
+"lng": -119.8573436
+},
+"775 Camino Del Sur, Isla Vista, CA": {
+"display": "775, Camino del Sur, 67 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.415466,
+"lng": -119.8626714
+},
+"785 Camino Del Sur, Goleta, Isla Vista, CA": null,
 "796 Embarcadero del Norte (Carriage House), Goleta, CA": null,
+"796 Embarcadero del Norte (Carriage House), Goleta, Isla Vista, CA": null,
 "810 Bond Avenue, Santa Barbara, CA 93103": null,
+"811 Camino Pescadero, Isla Vista, CA": {
+"display": "Tropicana Villas, 811, Camino Pescadero, 66 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.414905,
+"lng": -119.8592075
+},
 "813 East Anapamu Street, Santa Barbara, CA 93103": null,
+"833 Embarcadero del Mar, Isla Vista, CA": {
+"display": "Embarcadero Apartments, 833, Embarcadero del Mar, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4146389,
+"lng": -119.8576228
+},
 "850 Camino Pescadero, Goleta, CA": null,
+"850 Camino Pescadero, Goleta, Isla Vista, CA": null,
+"880 Camino Del Sur, Isla Vista, CA": {
+"display": "U.Me.IV, 880, Camino del Sur, 67 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4133283,
+"lng": -119.862333
+},
 "885 Fortuna Ln, Goleta, CA": null,
+"885 Fortuna Ln, Goleta, Isla Vista, CA": null,
+"901 Embarcadero del Mar, Isla Vista, CA": {
+"display": "901, Embarcadero del Mar, 65 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4129569,
+"lng": -119.8573222
+},
+"910 Camino Pescadero, Goleta, Isla Vista, CA": null,
+"931 Camino Corto, Goleta, Isla Vista, CA": null,
 "939 Embarcadero del Mar, Goleta, CA": null,
+"939 Embarcadero del Mar, Goleta, Isla Vista, CA": null,
 "971 Embarcadero del Mar, Goleta, CA": null,
+"971 Embarcadero del Mar, Goleta, Isla Vista, CA": null,
+"Abrego Rd, Isla Vista, CA": {
+"display": "Abrego Road, 67 Block, Isla Vista, Santa Barbara County, California, 93106, United States",
+"lat": 34.4144573,
+"lng": -119.8645315
+},
+"Alta Mesa, CA": {
+"display": "Alta Mesa, Redding, Shasta County, California, United States",
+"lat": 40.5398308,
+"lng": -122.334612
+},
+"Barranca Ave, CA": {
+"display": "Barranca Avenue, Santa Barbara, Santa Barbara County, California, 93102, United States",
+"lat": 34.402328,
+"lng": -119.7043436
+},
+"Brandon Dr, CA": {
+"display": "Brandon Drive, Goleta, Santa Barbara County, California, 93199, United States",
+"lat": 34.4418237,
+"lng": -119.8921885
+},
+"Del Playa Dr, Isla Vista, CA": {
+"display": "Del Playa Drive, 66 Block, Isla Vista, Santa Barbara County, California, 93106, United States",
+"lat": 34.4097699,
+"lng": -119.8601034
+},
+"East Beach, CA": {
+"display": "East Beach, Santa Barbara, Santa Barbara County, California, United States",
+"lat": 34.4144768,
+"lng": -119.6815327
+},
+"Eastside, CA": {
+"display": "Eastside, Santa Cruz, Santa Cruz County, California, 95062, United States",
+"lat": 36.9832416,
+"lng": -122.0056911
+},
+"Ekwill St, CA": {
+"display": "Ekwill Street, Goleta, Santa Barbara County, California, 93111, United States",
+"lat": 34.4322761,
+"lng": -119.824999
+},
+"El Colegio Rd, Isla Vista, CA": {
+"display": "El Colegio Road, Isla Vista, Santa Barbara County, California, 93106, United States",
+"lat": 34.4172892,
+"lng": -119.8539643
+},
+"El Sueno Rd, Isla Vista, CA": null,
 "Fall Quarter Male Subleaser Needed \u2013 65 Oceanside DP, CA": null,
+"Fall Quarter Male Subleaser Needed \u2013 65 Oceanside DP, Isla Vista, CA": null,
 "Fall Sublet for Double on Sabado Tarde \u2013 Seeking Female Roommate, CA": null,
+"Fall Sublet for Double on Sabado Tarde \u2013 Seeking Female Roommate, Isla Vista, CA": null,
 "Female Roommate Wanted \u2013 2BR/1BA Apartment in Downtown SB, CA": null,
 "Female Roommate Wanted \u2013 Furnished 1B1B at Downtown SB, CA": null,
 "Female Roommate Wanted \u2013 Shared Room in Isla Vista (Lease Takeover), CA": null,
 "Female Subleaser Needed at Tahitian \u2013 Furnished Triple for 26/27 Year, CA": null,
+"Female Subleaser Needed at Tahitian \u2013 Furnished Triple for 26/27 Year, Isla Vista, CA": null,
 "Female Subleaser Wanted \u2013 Winter & Spring 2027, CA": null,
+"Female Subleaser Wanted \u2013 Winter & Spring 2027, Isla Vista, CA": null,
 "Furnished IV Townhouse Spot \u2013 Jan to Sept 2027, CA": null,
+"Furnished IV Townhouse Spot \u2013 Jan to Sept 2027, Isla Vista, CA": null,
 "Furnished Room in 4B/2B Home at Brandon Neighborhood \u2013 Utilities Included, CA": null,
 "Furnished Spacious Room at Alta Mesa \u2013 Utilities Included, CA": null,
+"Goleta, CA": {
+"display": "Goleta, Santa Barbara County, California, United States",
+"lat": 34.4358295,
+"lng": -119.8276389
+},
 "IV Apartment Available Sept to June \u2013 Furnished or Unfurnished Option, CA": null,
+"IV Apartment Available Sept to June \u2013 Furnished or Unfurnished Option, Isla Vista, CA": null,
 "Immediate Campus 880 Lease Takeover \u2013 $800/Mo Shared Triple, CA": null,
+"Immediate Campus 880 Lease Takeover \u2013 $800/Mo Shared Triple, Isla Vista, CA": null,
 "Isla Vista 1 bedroom Apt on 2nd floor, sub-lease, CA": null,
+"Isla Vista, CA": {
+"display": "Isla Vista, Santa Barbara County, California, United States",
+"lat": 34.414564,
+"lng": -119.8568656
+},
 "Large Furnished Room in Goleta \u2013 Private Bathroom & Utilities Included, CA": null,
 "Large Unfurnished Room on the Mesa \u2013 Available September 15, CA": null,
 "Lease Takeover \u201826-\u201827 at 65 DP Oceanside \u2013 Girls Triple Room, CA": null,
+"Lease Takeover \u201826-\u201827 at 65 DP Oceanside \u2013 Girls Triple Room, Isla Vista, CA": null,
 "Oceanside Del Playa Sublease \u2013 Oct & Nov, CA": null,
+"Oceanside Del Playa Sublease \u2013 Oct & Nov, Isla Vista, CA": null,
 "Private Room + Bath in 2BR/2BA \u2013 Available Oct 1, CA": null,
 "Private Room in 3BR/2BA Home \u2013 October Move-In, CA": null,
 "Private Studio for Lease Takeover \u2013 All Utilities Included, CA": null,
+"Private Studio for Lease Takeover \u2013 All Utilities Included, Isla Vista, CA": null,
 "Roommate Wanted for Double \u2013 10 min from SBCC Near East Beach, CA": null,
 "Sabado Tarde Rd, Isla Vista, CA": {
 "display": "Sabado Tarde Road, 68 Block, Isla Vista, Santa Barbara County, California, 93106, United States",
 "lat": 34.4105542,
 "lng": -119.8687684
+},
+"Santa Barbara, CA": {
+"display": "Santa Barbara, Santa Barbara County, California, United States",
+"lat": 34.4221319,
+"lng": -119.702667
+},
+"Segovia Rd, Isla Vista, CA": {
+"display": "Segovia Road, 65 Block, Isla Vista, Santa Barbara County, California, 93106, United States",
+"lat": 34.4144392,
+"lng": -119.8562194
 },
 "Single Room Available for Fall 2026 \u2013 Isla Vista, CA": null,
 "Single Room at 65 Segovia \u2013 Renovated 2BR Apartment, CA": null,
@@ -257,14 +626,46 @@
 "Single Room in 2BR/1BA Apartment \u2013 Upper State St, Available Late Sept, CA": null,
 "Small Master Bedroom in Goleta Home \u2013 Available Now, CA": null,
 "Spacious 1 Bed/ 1 Bath Apartment Near UC Santa Barbara, CA": null,
+"Spacious 1 Bed/ 1 Bath Apartment Near UC Santa Barbara, Isla Vista, CA": null,
 "Spot in Double Room for Winter-Spring 2027 \u2013 Female Only, CA": null,
+"Spot in Double Room for Winter-Spring 2027 \u2013 Female Only, Isla Vista, CA": null,
+"The Meadows, 6754 Abrego Rd, Isla Vista, CA": {
+"display": "The Meadows Apartments, 6753, Abrego Road, 67 Block, Isla Vista, Santa Barbara County, California, 93117, United States",
+"lat": 34.4142295,
+"lng": -119.8645678
+},
+"Trigo Rd, Isla Vista, CA": {
+"display": "Trigo Road, 66 Block, Isla Vista, Santa Barbara County, California, 93106, United States",
+"lat": 34.4111515,
+"lng": -119.8616748
+},
 "Tropicana Lease Takeover \u2013 School Year Housing, CA": null,
+"Tropicana Lease Takeover \u2013 School Year Housing, Isla Vista, CA": null,
 "Two Spots in One Mosaic Double \u2013 Full-Year Lease (Half-off for First Month), CA": null,
+"Two Spots in One Mosaic Double \u2013 Full-Year Lease (Half-off for First Month), Isla Vista, CA": null,
 "UCSB Sublet for Female Double \u2013 Prime Sabado Tarde Location, CA": null,
+"UCSB Sublet for Female Double \u2013 Prime Sabado Tarde Location, Isla Vista, CA": null,
 "Upstairs Double at The Cove \u2013 Available Asap for Takeover, CA": null,
 "Urgent 65 Block Del Playa Sublease \u2013 Furnished Triple Spot, CA": null,
+"Urgent 65 Block Del Playa Sublease \u2013 Furnished Triple Spot, Isla Vista, CA": null,
 "Urgent Lease Takeover 26/27 UCSB/SBCC \u2013 Tropicana Student Housing, CA": null,
+"Urgent Lease Takeover 26/27 UCSB/SBCC \u2013 Tropicana Student Housing, Isla Vista, CA": null,
 "Urgent Roommate Needed for 2026-2027 \u2013 One Mosaic, CA": null,
+"W Gutierrez St, CA": {
+"display": "West Gutierrez Street, Santa Barbara, Santa Barbara County, California, 93102, United States",
+"lat": 34.4108914,
+"lng": -119.6994987
+},
+"Westside, CA": {
+"display": "Westside, Fresno County, California, 93624, United States",
+"lat": 36.4005066,
+"lng": -120.1390355
+},
+"Willow Springs Ln, CA": {
+"display": "Willow Springs Lane, Glendora, Los Angeles County, California, 91741, United States",
+"lat": 34.1509025,
+"lng": -117.8424726
+},
 "[Goleta/UCSB] Urgent Private Furnished Room for Female, CA": null,
 "\ud83d\udea8 $600 Rent Contribution \u2013 Fall 2026 Lease Takeover from $1, 760/Month, CA": null
 }
