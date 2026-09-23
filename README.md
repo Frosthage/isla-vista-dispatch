@@ -29,9 +29,9 @@ listings as **New**, track price changes and skip geocoding known addresses.
 |---|---|---|
 | Local property managers on AppFolio (Playa Life, Wolfe & Associates, IV Properties, SFM Vista Del Mar, Excellence PM, Harwin, D63, Cochrane, Koto, DMH, Gallagher) | `scrape/sources/appfolio.py` | AppFolio's robots.txt allows only the list page, so each listing carries one photo and a truncated description. |
 | Meridian Group (Rent Manager) | `scrape/sources/meridian.py` | One listing per available unit. |
-| MyUniStop (UCSB student marketplace) | `scrape/sources/myunistop.py` | Leases, subleases and rooms posted in the last 60 days; "Leasing Closed" posts are skipped. |
+| MyUniStop (UCSB student marketplace) | `scrape/sources/myunistop.py` | Subleases and rooms from the public listing cards (street-level location, marked approximate). Detail pages sit behind a per-IP login wall after a few dozen views, so only the newest posts get full details, and property-manager leases are kept only when their detail page was readable and says open. |
 | Craigslist Santa Barbara | `scrape/sources/craigslist.py` | apa / roo / sub categories, several queries. |
-| Redfin | `scrape/sources/redfin.py` | Search results only; detail pages are bot-checked. |
+| Redfin | `scrape/sources/redfin.py` | Search results only; detail pages are bot-checked. Works from a home connection but Redfin answers HTTP 405 to GitHub-hosted runners, so the published site has no Redfin listings. |
 | ApartmentGuide | `scrape/sources/apartmentguide.py` | Isla Vista, Goleta and Santa Barbara city pages. |
 | Icon, Solis Isla Vista, State on Campus | `scrape/sources/complexes.py` | Purpose-built student communities. |
 | IV Tenants Union rental guide, Pardall Center roster | `scrape/enrich.py` | Lease policies and contact info joined by manager name. |
